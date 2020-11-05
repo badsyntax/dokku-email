@@ -12,7 +12,7 @@ It's suggested you also install `postfix` as a satellite system that uses a 3rd 
 dokku plugin:install https://github.com/badsyntax/dokku-email.git
 ```
 
-You can update the plugin with:
+Update the plugin with:
 
 ```sh
 dokku plugin:update email
