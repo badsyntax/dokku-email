@@ -37,7 +37,7 @@ help_content
     }
 
     if [[ $1 = "email:help" ]] ; then
-        echo -e 'Usage: dokku email[:command] [<app>] [<email>]'
+        echo -e 'Usage: dokku email[:command] [<email>]'
         echo ''
         echo 'Sends an email on post-deploy'
         echo ''

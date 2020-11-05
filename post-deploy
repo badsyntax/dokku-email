@@ -16,7 +16,7 @@ while read email; do
   dokku_log_info2_quiet "-----> Sending email to $email"
 
   MESSAGE="Dokku has successfully deployed $APP.\n\n$URLS"
-  if ! echo "$MESSAGE" | mail -s "Successful Dokku Deployment" "$email"; then
+  if ! echo -e "$MESSAGE" | mail -s "Successful Dokku Deployment" "$email"; then
       dokku_log_warn "Failed to send email to '$email'"
   fi
 done < "$EMAILS_FILE"
