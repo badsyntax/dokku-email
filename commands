@@ -10,7 +10,7 @@ case "$1" in
     cat "$EMAILS_FILE" 2>/dev/null
     ;;
 
-  email:set)
+  email:add)
      [[ -z $2 ]] && echo "Please specify an email" && exit 1
     if ! command -v "mail" &>/dev/null; then
       dokku_log_fail Cannot set email. mailutils is not installed
@@ -30,7 +30,7 @@ case "$1" in
     help_content_func () {
       # declare desc="return help_content string"
       cat<<help_content
-    email:set <email>, Sets an email to be notified for every deployment
+    email:add <email>, Add an email to be notified for every deployment
     email:remove <email>, Removes an email
     email:list, Shows all emails
 help_content
@@ -43,7 +43,7 @@ help_content
         echo ''
         echo 'Example:'
         echo ''
-        echo '$ dokku email:set myapp email@example.com'
+        echo '$ dokku email:add email@example.com'
         echo ''
         echo 'Commands:'
         help_content_func | sort | column -c2 -t -s,

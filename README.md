@@ -29,7 +29,7 @@ dokku email:help
 Add an email:
 
 ```sh
-dokku email:set email@example.com
+dokku email:add email@example.com
 ```
 
 Remove an email
