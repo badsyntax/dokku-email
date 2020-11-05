@@ -8,15 +8,14 @@ source "$(dirname $0)/config"
 [[ -f "$EMAILS_FILE" ]] || exit 0
 
 APP="$1"
-HOSTNAME=$(hostname -f)
-URL=$(dokku url $APP)
+URLS=$(dokku urls $APP)
 
-dokku_log_info1 "Sending emails for $APP"
+dokku_log_info1 "Sending email notifications for $APP"
 
 while read email; do
   dokku_log_info2_quiet "-----> Sending email to $email"
 
-  MESSAGE="Deployed $APP to $HOSTNAME via $URL"
+  MESSAGE="Dokku has successfully deployed $APP.\n\n$URLS"
   if ! echo "$MESSAGE" | mail -s "Successful Dokku Deployment" "$email"; then
       dokku_log_warn "Failed to send email to '$email'"
   fi
